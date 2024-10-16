@@ -242,7 +242,7 @@ x_to_a_mapping = {
 
 def get_icon_url(leader_name):
     # Return the local path from the A -> D mapping
-    print(a_to_d_mapping.get(leader_name, ""))
+    #print(a_to_d_mapping.get(leader_name, ""))
     return a_to_d_mapping.get(leader_name, "")
 
 def load_data():
