@@ -249,20 +249,18 @@ def get_icon_url(leader_name):
     #print(a_to_d_mapping.get(leader_name, ""))
     return a_to_d_mapping.get(leader_name, "")
 
-def load_data():
+def load_data(filename):
     # Replace this with the actual path to your Excel file
-    df = pd.read_excel('data/processed_data.xlsx')
+    df = pd.read_excel(filename)
     return df
 
 
-
-
-
-
+# Monthly Stats Route
 @app.route('/')
-def show_table():
+@app.route('/monthly_stats')
+def show_monthly_stats():
     # Load the data from your Excel file or database
-    df = load_data()
+    df = load_data('data/processed_data.xlsx')
 
     # Update Civilization Leader names using X -> A mapping
     df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))
@@ -274,7 +272,85 @@ def show_table():
     data = df.to_dict(orient='records')
 
     # Render the HTML with the data passed directly
-    return render_template('index.html', data=data)
+    return render_template('monthly.html', data=data)
+
+# Top 100 Route
+@app.route('/top100')
+def show_top100_stats():
+    # Load the data from your Excel file or database
+    df = load_data('data/processed_data.xlsx')
+
+    # Update Civilization Leader names using X -> A mapping
+    df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))
+    
+    # Add a column for icon URLs using the A -> D mapping
+    df['Icon URL'] = df['Civilization Leader'].apply(get_icon_url)
+
+    # Convert DataFrame to a list of dictionaries (rows) for rendering
+    data = df.to_dict(orient='records')
+
+    # Render the HTML with the data passed directly
+    return render_template('top100.html', data=data)
+
+
+# Easy Lobby Route (Pro Players)
+@app.route('/easy-lobby')
+def show_easy_lobby_stats():
+    # Load the data from your Excel file or database
+    df = load_data('data/processed_data.xlsx')
+
+    # Update Civilization Leader names using X -> A mapping
+    df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))
+    
+    # Add a column for icon URLs using the A -> D mapping
+    df['Icon URL'] = df['Civilization Leader'].apply(get_icon_url)
+
+    # Convert DataFrame to a list of dictionaries (rows) for rendering
+    data = df.to_dict(orient='records')
+
+    # Render the HTML with the data passed directly
+    return render_template('easy_lobby.html', data=data)
+
+# Hard Lobby Route (Noob Players)
+@app.route('/hard-lobby')
+def show_hard_lobby_stats():
+    # Load the data from your Excel file or database
+    df = load_data('data/processed_data.xlsx')
+
+    # Update Civilization Leader names using X -> A mapping
+    df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))
+    
+    # Add a column for icon URLs using the A -> D mapping
+    df['Icon URL'] = df['Civilization Leader'].apply(get_icon_url)
+
+    # Convert DataFrame to a list of dictionaries (rows) for rendering
+    data = df.to_dict(orient='records')
+
+    # Render the HTML with the data passed directly
+    return render_template('hard_lobby.html', data=data)
+
+# Hard Lobby Route (Noob Players)
+@app.route('/teamers')
+def show_teamers_stats():
+    # Load the data from your Excel file or database
+    df = load_data('data/processed_data.xlsx')
+
+    # Update Civilization Leader names using X -> A mapping
+    df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))
+    
+    # Add a column for icon URLs using the A -> D mapping
+    df['Icon URL'] = df['Civilization Leader'].apply(get_icon_url)
+
+    # Convert DataFrame to a list of dictionaries (rows) for rendering
+    data = df.to_dict(orient='records')
+
+    # Render the HTML with the data passed directly
+    return render_template('teamers.html', data=data)
+
+# About Page Route
+@app.route('/about')
+def show_about_page():
+    return render_template('about.html', title="About", description="All data are from CivPlayers Leagues.")
 
 if __name__ == '__main__':
     app.run(debug=True)

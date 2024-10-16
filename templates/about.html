@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Civ Stats</title>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Main Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        th:first-child, td:first-child {
+            width: 5%;
+        }
+
+        img.leader-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            display: inline-block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        nav ul li a.active {
+            background-color: #4CAF50;
+        }
+
+        /* Hover Effect */
+        nav ul li a.active:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                text-align: center;
+            }
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('show_monthly_stats') }}">Monthly Stats</a></li>
+            <li><a href="{{ url_for('show_top100_stats') }}">Top 100</a></li>
+            <li><a href="{{ url_for('show_easy_lobby_stats') }}">Easy Lobby (Pro)</a></li>
+            <li><a href="{{ url_for('show_hard_lobby_stats') }}">Hard Lobby (Noob)</a></li>	    <li><a href="{{ url_for('show_teamers_stats') }}" >Teamers</a></li>
+            <li><a href="{{ url_for('show_about_page') }}" class="active">About</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>About This Page</h1>
+        <div class="content">
+            <p>This website provides statistical analysis of players(in the future) and civilizations in the Civilization VI multiplayer games. All the data is sourced from the CivPlayers League(CPL) Discord, which hosts thousands of multiplayer games per month.</p> 
+            <p>Monthly stats include all FFA (Free For All) matches with 10 players. The top 100 pages include stat of the top 100(pro) players, easy lobbies, consider matches for people with higher ratings than average, and data about newer players in a lobby with a higher rating in the hard lobby.</p>
+            <p>To navigate between the different statistics, use the menu at the top of the page. Also, you can sort based on different criteria on each page.</p>
+        </div>
+    </div>
+</body>
+</html>

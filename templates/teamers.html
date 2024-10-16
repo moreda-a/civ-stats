@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civilization Leaders Statistics</title>
-    <!-- DataTables CSS -->
+    <title>Teamers</title>
+<!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <!-- Custom CSS -->
     <style>
         /* Main Styling */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -95,29 +95,28 @@
             margin-top: 50px;
         }
     </style>
+    
 </head>
 <body>
-
     <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li><a href="{{ url_for('show_monthly_stats') }}" class="{% if page == 'monthly_stats' %}active{% endif %}">Monthly Stats</a></li>
-            <li><a href="{{ url_for('show_top100_stats') }}" class="{% if page == 'top100_stats' %}active{% endif %}">Top 100</a></li>
-            <li><a href="{{ url_for('show_easy_lobby_stats') }}" class="{% if page == 'easy_lobby_stats' %}active{% endif %}">Easy Lobby (Pro)</a></li>
-            <li><a href="{{ url_for('show_hard_lobby_stats') }}" class="{% if page == 'hard_lobby_stats' %}active{% endif %}">Hard Lobby (Noob)</a></li>    <li><a href="{{ url_for('show_teamers_stats') }}" >Teamers</a></li>
-            <li><a href="{{ url_for('show_about_page') }}" class="{% if page == 'about_page' %}active{% endif %}">About</a></li>
+            <li><a href="{{ url_for('show_monthly_stats') }}">Monthly Stats</a></li>
+            <li><a href="{{ url_for('show_top100_stats') }}" >Top 100</a></li>
+            <li><a href="{{ url_for('show_easy_lobby_stats') }}">Easy Lobby (Pro)</a></li>
+            <li><a href="{{ url_for('show_hard_lobby_stats') }}">Hard Lobby (Noob)</a></li>
+	    <li><a href="{{ url_for('show_teamers_stats') }}" class="active">Teamers</a></li>
+            <li><a href="{{ url_for('show_about_page') }}">About</a></li>
         </ul>
     </nav>
-
-    <!-- Content -->
     <div class="container">
-        <h1>Civilization Leader Statistics</h1>
+        <h1>Teamers</h1>
         <div class="table-responsive">
             <table id="leaderTable" class="display">
                 <thead>
                     <tr>
                         <th>Row Number</th>
-                        <th>Civilization Leader</th>
+                        <th>Player</th>
                         <th>Wins</th>
                         <th>Total Matches</th>
                         <th>Win Rate (%)</th>
@@ -142,12 +141,8 @@
             </table>
         </div>
     </div>
-
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- DataTables JS -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-
     <script>
         $(document).ready(function () {
             var table = $('#leaderTable').DataTable({
@@ -155,11 +150,10 @@
                 "paging": false,
                 "info": false,
                 "columnDefs": [
-                    { "orderable": false, "targets": 0 }  // Disable sorting for row numbers
+                    { "orderable": false, "targets": 0 }
                 ]
             });
 
-            // Add dynamic row numbers
             table.on('order.dt search.dt', function () {
                 table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
                     cell.innerHTML = i + 1;
