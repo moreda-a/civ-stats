@@ -272,7 +272,7 @@ def show_monthly_stats():
     data = df.to_dict(orient='records')
 
     # Render the HTML with the data passed directly
-    return render_template('monthly.html', data=data)
+    return render_template('index.html', data=data)
 
 # Top 100 Route
 @app.route('/top100')
