@@ -278,7 +278,7 @@ def show_monthly_stats():
 @app.route('/top100')
 def show_top100_stats():
     # Load the data from your Excel file or database
-    df = load_data('data/processed_data.xlsx')
+    df = load_data('data/top100_data.xlsx')
 
     # Update Civilization Leader names using X -> A mapping
     df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))
@@ -297,7 +297,7 @@ def show_top100_stats():
 @app.route('/easy-lobby')
 def show_easy_lobby_stats():
     # Load the data from your Excel file or database
-    df = load_data('data/processed_data.xlsx')
+    df = load_data('data/easyL.xlsx')
 
     # Update Civilization Leader names using X -> A mapping
     df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))
@@ -315,7 +315,7 @@ def show_easy_lobby_stats():
 @app.route('/hard-lobby')
 def show_hard_lobby_stats():
     # Load the data from your Excel file or database
-    df = load_data('data/processed_data.xlsx')
+    df = load_data('data/hardL.xlsx')
 
     # Update Civilization Leader names using X -> A mapping
     df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))
@@ -333,7 +333,7 @@ def show_hard_lobby_stats():
 @app.route('/teamers')
 def show_teamers_stats():
     # Load the data from your Excel file or database
-    df = load_data('data/processed_data.xlsx')
+    df = load_data('data/teamers_data.xlsx')
 
     # Update Civilization Leader names using X -> A mapping
     df['Civilization Leader'] = df['Civilization Leader'].apply(lambda x: x_to_a_mapping.get(x, x))

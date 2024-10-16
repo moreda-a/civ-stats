@@ -101,7 +101,7 @@
     <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li><a href="{{ url_for('show_monthly_stats') }}" class="{% if page == 'monthly_stats' %}active{% endif %}">Monthly Stats</a></li>
+            <li><a href="{{ url_for('show_monthly_stats') }}" class="active">Monthly Stats</a></li>
             <li><a href="{{ url_for('show_top100_stats') }}" class="{% if page == 'top100_stats' %}active{% endif %}">Top 100</a></li>
             <li><a href="{{ url_for('show_easy_lobby_stats') }}" class="{% if page == 'easy_lobby_stats' %}active{% endif %}">Easy Lobby (Pro)</a></li>
             <li><a href="{{ url_for('show_hard_lobby_stats') }}" class="{% if page == 'hard_lobby_stats' %}active{% endif %}">Hard Lobby (Noob)</a></li>    <li><a href="{{ url_for('show_teamers_stats') }}" >Teamers</a></li>
@@ -111,7 +111,7 @@
 
     <!-- Content -->
     <div class="container">
-        <h1>Civilization Leader Statistics</h1>
+        <h1>Civilization Leader Statistics(From CPL Discord)</h1>
         <div class="table-responsive">
             <table id="leaderTable" class="display">
                 <thead>
