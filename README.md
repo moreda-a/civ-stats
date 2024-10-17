@@ -1,3 +1,3 @@
 # Flask App
 
-This is a simple Flask app that returns "Hello, World!".
+This is early version of Civ-Stats.
